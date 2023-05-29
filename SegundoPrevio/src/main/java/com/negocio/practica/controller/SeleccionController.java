@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.negocio.practica.entities.Continente;
 import com.negocio.practica.entities.Resultado;
 import com.negocio.practica.entities.Seleccion;
+import com.negocio.practica.repository.ContinenteRepository;
 import com.negocio.practica.repository.SeleccionRepository;
 
 @Controller
@@ -18,6 +21,9 @@ public class SeleccionController {
 
 	@Autowired
 	SeleccionRepository repositorio;
+	
+	@Autowired
+	ContinenteRepository repositorioContinente;
 	
 	@GetMapping({"/","/selecciones"})
 	public String verSelecciones(Model modelo) {
@@ -28,8 +34,10 @@ public class SeleccionController {
 	
 	@GetMapping("/selecciones/nuevo")
 	public String mostrarFormulario(Model modelo){
+		List<Continente> listaContinentes = repositorioContinente.findAll();
 		Seleccion seleccion = new Seleccion();
 		modelo.addAttribute("seleccion", seleccion);
+		modelo.addAttribute("continentes", listaContinentes);
 		return "crear-seleccion";
 	}
 	

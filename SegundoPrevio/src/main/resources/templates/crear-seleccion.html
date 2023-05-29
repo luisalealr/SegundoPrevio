@@ -10,6 +10,44 @@
 <title>Agregar Selección</title>
 </head>
 <body>
-
+	<nav class="navbar navbar-expand-lg">
+		<a class="navbar-brand" href="/" style="color: #251103;">Futbolístico</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Registro de Selecciones</h1>
+				<div class="card-body">
+					<form th:action="@{/selecciones}" th:object="${seleccion}" method="post">
+						<div class="form-group">
+							<label>Nombre: </label> <input type="text" name="nombre"
+								th:field="*{nombre}" class="form-control"
+								placeholder="Digite el titulo de la noticianombre de la seleccion:">
+						</div>
+						<div class="form-group">
+							<label>Grupo: </label> <input type="text" name="grupo"
+								th:field="*{grupo}" class="form-control"
+								placeholder="Digite el grupo de la seleccion:">
+						</div>
+						<div class="form-group">
+							<label>Continente: </label> <select th:field="*{continente}"
+								class="form-control" required>
+								<th:block th:each="continente : ${continentes}">
+									<option th:text="${continente.nombre}"
+										th:value="${continente.id}"></option>
+								</th:block>
+							</select>
+						</div>
+						<div class="box-footer">
+							<button class="btn btn-success">Guardar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
