@@ -68,7 +68,7 @@ public class SeleccionController {
 	@GetMapping("/selecciones/{id}/eliminar")
 	public String eliminarNoticia(@PathVariable("id") Integer id) {
 		repositorio.deleteById(id);
-		return "redirect:/seleccion";
+		return "redirect:/selecciones";
 	}
 
 	@GetMapping("/selecciones/{id}/resultados")

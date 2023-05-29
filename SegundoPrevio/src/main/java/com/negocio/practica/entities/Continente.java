@@ -2,6 +2,7 @@ package com.negocio.practica.entities;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +30,7 @@ public class Continente{
 
 	private String nombre;
 
-	@OneToMany(mappedBy="continente")
+	@OneToMany(mappedBy="continente" , fetch = FetchType.EAGER)
 	private List<Seleccion> seleccions;
 
 }
