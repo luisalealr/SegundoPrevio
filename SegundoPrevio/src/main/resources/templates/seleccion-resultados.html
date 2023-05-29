@@ -10,6 +10,39 @@
 <title>Resultados</title>
 </head>
 <body>
-Bueno imagine que acá salen todos los resultados
+	<nav class="navbar navbar-expand-lg">
+		<a class="navbar-brand" href="/" style="color: #251103;">Futbolístico</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+			</ul>
+		</div>
+	</nav>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Partido</th>
+				<th scope="col">Seleccion</th>
+				<th scope="col">Goles</th>
+				<th scope="col">Amarillas</th>
+				<th scope="col">Rojas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="resultados : ${resultados}">
+				<td th:text="${resultados.id}">Id</td>
+				<td th:text="${resultados.partido.id}">Partido</td>
+				<td th:text="${resultados.seleccion.nombre}">Seleccion</td>
+				<td th:text="${resultados.goles}">Goles</td>
+				<td th:text="${resultados.amarillas}">Amarillas</td>
+				<td th:text="${resultados.rojas}">Rojas</td>
+				<td><a
+					th:href="@{/seleccionresultados/{id}/editar(id=${resultados.id})}"
+					class="btn btn-secondary">Editar</a> <a
+					th:href="@{/seleccionresultados/{id}/eliminar(id=${resultados.id})}"
+					class="btn btn-danger">Eliminar</a></td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
