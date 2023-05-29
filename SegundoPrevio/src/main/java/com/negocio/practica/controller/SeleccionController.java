@@ -3,6 +3,7 @@ package com.negocio.practica.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import com.negocio.practica.entities.Resultado;
 import com.negocio.practica.entities.Seleccion;
 import com.negocio.practica.repository.SeleccionRepository;
 
+@Controller
 public class SeleccionController {
 
 	@Autowired
