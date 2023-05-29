@@ -12,8 +12,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg">
 		<a class="navbar-brand" href="/" style="color: #251103;">Futbolístico</a>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-		</div>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar"></div>
 	</nav>
 	<div class="container">
 		<div class="row">
@@ -21,7 +20,8 @@
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class="text-center">Registro de Selecciones</h1>
 				<div class="card-body">
-					<form th:action="@{/selecciones}" th:object="${seleccion}" method="post">
+					<form th:action="@{/selecciones{id}(id=${seleccion.id})}"
+						th:object="${seleccion}" method="post">
 						<div class="form-group">
 							<label>Nombre: </label> <input type="text" name="nombre"
 								th:field="*{nombre}" class="form-control"

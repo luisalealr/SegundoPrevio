@@ -49,7 +49,9 @@ public class SeleccionController {
 	
 	@GetMapping("/selecciones/{id}/editar")
 	public String mostrarFormularioEditar(@PathVariable("id") Integer id, Model modelo) {
+		List<Continente> listaContinentes = repositorioContinente.findAll();
 		modelo.addAttribute("seleccion", repositorio.findById(id).get());
+		modelo.addAttribute("continentes", listaContinentes);
 		return "editar-seleccion";
 	}
 	
