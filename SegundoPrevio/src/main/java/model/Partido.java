@@ -1,14 +1,16 @@
 package model;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 
@@ -18,11 +20,12 @@ import lombok.Data;
  */
 @Entity
 @Data
-@NamedQuery(name="Partido.findAll", query="SELECT p FROM Partido p")
-public class Partido implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+@Table(name="partido")
+public class Partido {
+	
 	@Id
+	@SequenceGenerator(name="partido_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "partido_id_seq")
 	private Integer id;
 
 	private Timestamp fecha;

@@ -1,13 +1,15 @@
 package model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 
 /**
@@ -15,11 +17,12 @@ import jakarta.persistence.OneToMany;
  * 
  */
 @Entity
-@NamedQuery(name="Seleccion.findAll", query="SELECT s FROM Seleccion s")
-public class Seleccion implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="seleccion")
+public class Seleccion{
 
 	@Id
+	@SequenceGenerator(name="seleccion_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seleccion_id_seq")
 	private Integer id;
 
 	private String grupo;
