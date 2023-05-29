@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="estilos.css">
+<meta charset="UTF-8">
+<title>Selecciones</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg">
+		<a class="navbar-brand" href="/" style="color: #251103;">Futbolístico</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/selecciones/nuevo}" style="color: #251103;">Agregar
+						Nueva Seleccion</a></li>
+			</ul>
+		</div>
+	</nav>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Grupo</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Resultados</th>
+				<th scope="col">Continente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="seleccion : ${selecciones}">
+				<td th:text="${seleccion.id}">Id</td>
+				<td th:text="${seleccion.nombre}">Nombre</td>
+				<td th:text="${seleccion.grupo}">Grupo</td>
+				<td><a th:href="@{/selecciones/{id}/resultados(id=${seleccion.id})}"
+					class="btn btn-info">Ver</a>Resultados</td>
+				<td th:text="${seleccion.continente.nombre}">Continente</td>
+				<td><a
+					th:href="@{/selecciones/{id}/editar(id=${seleccion.id})}"
+					class="btn btn-secondary">Editar</a> <a
+					th:href="@{/selecciones/{id}/eliminar(id=${seleccion.id})}"
+					class="btn btn-danger">Eliminar</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

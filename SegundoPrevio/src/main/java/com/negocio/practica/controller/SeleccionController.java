@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import com.negocio.practica.entities.Resultado;
 import com.negocio.practica.entities.Seleccion;
 import com.negocio.practica.repository.SeleccionRepository;
 
@@ -17,7 +17,7 @@ public class SeleccionController {
 	@Autowired
 	SeleccionRepository repositorio;
 	
-	@GetMapping("/selecciones")
+	@GetMapping({"/","/selecciones"})
 	public String verSelecciones(Model modelo) {
 		List<Seleccion> selecciones = repositorio.findAll();
 		modelo.addAttribute("selecciones", selecciones);
@@ -62,8 +62,16 @@ public class SeleccionController {
 	}
 
 	@GetMapping("/selecciones/{id}/resultados")
-	public String mostrarResultadosSeleccion(@PathVariable("id") Integer id) {
-		
+	public String mostrarResultadosSeleccion(@PathVariable("id") Integer id, Model modelo) {
+		Seleccion seleccion = repositorio.findById(id).get();
+        List<Resultado> resultados = seleccion.getResultados();
+        modelo.addAttribute("resultados", resultados);
 		return "seleccion-resultados";
 	}
+	/*
+	@GetMapping("/selecciones/grupo/{id}")
+	public String verSeleccionGrupo(@PathVariable("id") Integer id, Model modelo) {
+		List<Seleccion> selecciones = 
+		return "selecciones-grupo";
+	}*/
 }
