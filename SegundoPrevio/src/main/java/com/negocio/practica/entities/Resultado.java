@@ -1,4 +1,4 @@
-package model;
+package com.negocio.practica.entities;
 
 
 import jakarta.persistence.Entity;

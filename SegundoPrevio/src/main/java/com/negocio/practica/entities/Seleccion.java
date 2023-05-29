@@ -1,6 +1,5 @@
-package model;
+package com.negocio.practica.entities;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -15,26 +14,27 @@ import lombok.Data;
 
 
 /**
- * The persistent class for the partido database table.
+ * The persistent class for the seleccion database table.
  * 
  */
 @Entity
 @Data
-@Table(name="partido")
-public class Partido {
-	
+@Table(name="seleccion")
+public class Seleccion{
+
 	@Id
-	@SequenceGenerator(name="partido_id_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "partido_id_seq")
+	@SequenceGenerator(name="seleccion_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seleccion_id_seq")
 	private Integer id;
 
-	private Timestamp fecha;
+	private String grupo;
 
-	@ManyToOne
-	private Estadio estadio;
-
-	@OneToMany(mappedBy="partido")
+	private String nombre;
+	
+	@OneToMany(mappedBy="seleccion")
 	private List<Resultado> resultados;
 
+	@ManyToOne
+	private Continente continente;
 
 }

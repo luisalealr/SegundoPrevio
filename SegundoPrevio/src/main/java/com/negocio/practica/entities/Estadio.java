@@ -1,4 +1,4 @@
-package model;
+package com.negocio.practica.entities;
 
 
 import jakarta.persistence.Entity;
@@ -14,22 +14,24 @@ import java.util.List;
 
 
 /**
- * The persistent class for the continente database table.
+ * The persistent class for the estadio database table.
  * 
  */
 @Entity
 @Data
-@Table(name="continente")
-public class Continente{
+@Table(name="estadio")
+public class Estadio {
 
 	@Id
-	@SequenceGenerator(name="continente_id_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "continente_id_seq")
+	@SequenceGenerator(name="estadio_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "estadio_id_seq")
 	private Integer id;
+
+	private Integer capacidad;
 
 	private String nombre;
 
-	@OneToMany(mappedBy="continente")
-	private List<Seleccion> seleccions;
+	@OneToMany(mappedBy="estadio")
+	private List<Partido> partidos;
 
 }
