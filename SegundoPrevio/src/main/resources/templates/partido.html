@@ -6,7 +6,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<title>Selecciones</title>
+<title>Partidos</title>
 </head>
 <body>
 	<header th:include="header.html"></header>
@@ -15,17 +15,23 @@
 		<thead>
 			<tr>
 				<th scope="col">Id</th>
-				<th scope="col">Nombre</th>
+				<th scope="col">Fecha</th>
+				<th scope="col">Estadio</th>
+				<th scope="col">Resultados</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="continente : ${continentes}">
-				<td th:text="${continente.id}">Id</td>
-				<td th:text="${continente.nombre}">Nombre</td>
+			<tr th:each="partido : ${partidos}">
+				<td th:text="${partido.id}">Id</td>
+				<td th:text="${partido.Fecha}">Fecha</td>
+				<td th:text="${partido.estadio.nombre}">Estadio</td>
 				<td><a
-					th:href="@{/continentes/{id}/editar(id=${continente.id})}"
+					th:href="@{/partidos/{id}/resultados(id=${partido.id})}"
+					class="btn btn-info">Ver</a></td>
+				<td><a
+					th:href="@{/partidos/{id}/editar(id=${partido.id})}"
 					class="btn btn-secondary">Editar</a> <a
-					th:href="@{/continentes/{id}/eliminar(id=${continente.id})}"
+					th:href="@{/partidos/{id}/eliminar(id=${partido.id})}"
 					class="btn btn-danger">Eliminar</a></td>
 			</tr>
 		</tbody>

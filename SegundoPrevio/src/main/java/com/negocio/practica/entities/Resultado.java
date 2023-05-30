@@ -10,11 +10,6 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
-/**
- * The persistent class for the resultado database table.
- * 
- */
 @Entity
 @Data
 @Table(name="resultado")

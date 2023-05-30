@@ -46,7 +46,7 @@ public class ContinenteController {
 	}
 
 	@PostMapping("/continentes/{id}")
-	public String actualizarNoticia(@PathVariable("id") Integer id,
+	public String actualizarContinente(@PathVariable("id") Integer id,
 			@ModelAttribute("continente") Continente continente) {
 		Continente continenteActual = repositorio.findById(id).get();
 		continenteActual.setId(id);
@@ -56,7 +56,7 @@ public class ContinenteController {
 	}
 
 	@GetMapping("/continentes/{id}/eliminar")
-	public String eliminarNoticia(@PathVariable("id") Integer id) {
+	public String eliminarContinente(@PathVariable("id") Integer id) {
 		repositorio.deleteById(id);
 		return "redirect:/continentes";
 	}

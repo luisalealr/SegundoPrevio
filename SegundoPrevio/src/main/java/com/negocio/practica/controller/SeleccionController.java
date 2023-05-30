@@ -80,10 +80,12 @@ public class SeleccionController {
         modelo.addAttribute("resultados", resultados);
 		return "seleccion-resultados";
 	}
-	/*
-	@GetMapping("/selecciones/grupo/{id}")
-	public String verSeleccionGrupo(@PathVariable("id") Integer id, Model modelo) {
-		List<Seleccion> selecciones = 
+	
+	@GetMapping("/selecciones/grupo/{grupo}")
+	public String verSeleccionGrupo(@PathVariable("grupo") String grupo, Model modelo) {
+		List<Seleccion> selecciones = repositorio.findByGrupo(grupo);
+		modelo.addAttribute("selecciones", selecciones);
 		return "selecciones-grupo";
-	}*/
+	}
+	
 }
